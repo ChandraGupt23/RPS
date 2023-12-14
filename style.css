@@ -1,0 +1,630 @@
+:root {
+    --rockBorder: #0074B6;
+    --scissorBorder: #BD00FF;
+    --paperBorder: #FFA943;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: var(--i);
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background: #8CC461;
+}
+
+.Main-container {
+    display: block;
+}
+
+.Upper {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    /* display: none; */
+}
+
+.upper-container {
+    width: 80rem;
+    height: 16rem;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.title {
+    flex-grow: 1;
+    align-self: center;
+    margin-left: 1rem;
+    color: #fff;
+}
+
+.title>h3 {
+    font-size: 4rem;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.4rem;
+}
+
+.score-board {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.score {
+    background-color: #fff;
+    width: 14rem;
+    height: 12rem;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 0.6rem;
+}
+
+.score-heading {
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    color: #656565;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.DigitScore {
+    font-size: 7rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.Lower {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gestures {
+    width: 33rem;
+    position: relative;
+}
+
+.triangle {
+    width: 0px;
+    height: 0px;
+    position: relative;
+    border-left: 16.5rem solid transparent;
+    border-right: 16.5rem solid transparent;
+    border-top: 26.8rem solid rgba(0, 0, 0, 0.64);
+}
+
+.triangle::before {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    position: relative;
+    border-left: 12rem solid transparent;
+    border-right: 12rem solid transparent;
+    border-top: 20rem solid #8CC461;
+    left: -12rem;
+    bottom: 4.5rem;
+}
+
+.gestures>span {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    height: 15rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.gesturesHW {
+    height: 7rem;
+    width: 7rem;
+}
+
+.gesture-logo {
+    height: 6rem;
+}
+
+.rock {
+    border: 2rem solid var(--rockBorder);
+}
+
+.rock-position {
+    top: -7.5rem;
+    left: -7.5rem;
+}
+
+.scissors {
+    border: 2rem solid var(--scissorBorder);
+}
+
+.scissors-position {
+    top: -7.5rem;
+    right: -7.5rem;
+}
+
+.paper {
+    border: 2rem solid var(--paperBorder);
+}
+
+.paper-position {
+    bottom: -7.5rem;
+    left: 9rem;
+}
+
+
+/* Result part */
+
+.result-contianer {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.result {
+    width: 99rem;
+    height: 33rem;
+    display: flex;
+}
+
+.user-picked,
+.Pc-picked {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    flex-grow: 1;
+}
+
+.user-picked h1,
+.Pc-picked h1 {
+    color: #FFF;
+    margin-bottom: 4rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    font-size: 1.6rem;
+    z-index: 100;
+}
+
+
+/* User gesture border */
+
+#RockUser {
+    width: 100%;
+    height: 100%;
+    border: 2rem solid var(--rockBorder);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#ScissorsUser {
+    width: 100%;
+    height: 100%;
+    border: 2rem solid var(--scissorBorder);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#PaperUser {
+    width: 100%;
+    height: 100%;
+    border: 2rem solid var(--paperBorder);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+
+/* Pc gesture border */
+
+#RockPc {
+    width: 100%;
+    height: 100%;
+    border: 2rem solid var(--rockBorder);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#ScissorsPc {
+    width: 100%;
+    height: 100%;
+    border: 2rem solid var(--scissorBorder);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#PaperPc {
+    width: 100%;
+    height: 100%;
+    border: 2rem solid var(--paperBorder);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+
+/* Result animation part */
+
+.content {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    height: 19rem;
+    width: 19rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.win {
+    position: relative;
+    height: 19rem;
+    width: 19rem;
+    background-color: rgba(46, 154, 37, 0.39);
+    border-radius: 50%;
+}
+
+.win span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    opacity: .8;
+    animation: winAnimation 4s ease-out infinite;
+    animation-delay: calc(1s *var(--i));
+}
+
+
+/* Win Animation */
+
+.UserwinAnimation {
+    display: none;
+}
+
+.PcwinAnimation {
+    display: none;
+}
+
+@keyframes winAnimation {
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+    90% {
+        opacity: 0.2;
+    }
+    20% {
+        opacity: 1;
+    }
+}
+
+
+/* Play again button section */
+
+.WinLose {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    font-family: 'Roboto', san-sarif;
+    color: #FFF;
+}
+
+.WinLose h1 {
+    font-size: 2.6rem;
+    letter-spacing: 0.5rem;
+}
+
+.WinLose h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+}
+
+.WinLose button {
+    width: 12rem;
+    height: 3.4rem;
+    color: #6B6B6B;
+    background-color: #FFF;
+    border: none;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    font-size: 1.34rem;
+}
+
+
+/* Rules and Next button section */
+
+.lowest-container {
+    height: 10vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.button-container {
+    height: 100%;
+    width: 30rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.button-container>button {
+    color: #FFF;
+    width: 12rem;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.2rem;
+    font-size: 1.6rem;
+    height: 4rem;
+    background-color: transparent;
+    border: 2px solid #ffff;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.button-container>button:hover {
+    background-color: #FFF;
+    color: #8CC461;
+}
+
+.next {
+    display: none;
+}
+
+
+/* Rule banner */
+
+.rules-container {
+    height: 40rem;
+    width: 34rem;
+    position: fixed;
+    bottom: 12rem;
+    right: 5rem;
+    padding: 1.6rem;
+    background-color: #004429;
+    border-radius: 8px;
+    box-shadow: 0 0 0 .9rem #fff;
+    display: none;
+    z-index: 100;
+}
+
+.rules-content {
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.rules-content>h1 {
+    flex-grow: 0.5;
+    font-size: 3.5rem;
+}
+
+.rules-content>ul {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.7rem;
+    list-style: none;
+}
+
+.rules-content>ul>li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cross {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: 'Dangrek', sans-serif;
+    width: 8rem;
+    height: 8rem;
+    border: 0.9rem solid #fff;
+    border-radius: 50%;
+    background-color: #F00;
+    color: #FFF;
+    position: absolute;
+    top: -4rem;
+    right: -4rem;
+    cursor: pointer;
+}
+
+
+/* Hurray page display */
+
+.hurraypage {
+    width: 100vw;
+    height: 90vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hurraycup {
+    position: relative;
+    width: 50rem;
+    height: 40rem;
+}
+
+.cup {
+    position: absolute;
+    bottom: 1rem;
+    left: 15rem;
+}
+
+.cup img {
+    width: 20rem;
+    height: 20rem;
+}
+
+.hurraypage h1,
+h2 {
+    color: #FFF;
+    font-family: 'roboto', sans-serif;
+}
+
+.hurraypage h1 {
+    font-size: 5rem;
+    font-weight: 500;
+    letter-spacing: 10px;
+}
+
+.hurraypage h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 5px;
+}
+
+.hurraypage button {
+    width: 12rem;
+    height: 3.4rem;
+    color: #6B6B6B;
+    background-color: #FFF;
+    border: none;
+    border-radius: 1rem;
+    margin-top: 4rem;
+    cursor: pointer;
+    font-size: 1.34rem;
+}
+
+.star1 img {
+    height: 10rem;
+}
+
+.star2 img {
+    height: 10rem;
+}
+
+.star3 img {
+    height: 4rem;
+}
+
+.star4 img {
+    height: 4rem;
+}
+
+.star5 img {
+    height: 4rem;
+}
+
+.star6 img {
+    height: 10rem;
+}
+
+.star7 img {
+    height: 4rem;
+}
+
+.star8 img {
+    height: 7rem;
+}
+
+.star1 {
+    position: relative;
+    top: 20rem;
+}
+
+.star2 {
+    position: relative;
+    top: 0rem;
+    left: 19rem;
+}
+
+.star3 {
+    position: relative;
+    bottom: 6rem;
+    right: 15rem;
+}
+
+.star4 {
+    position: relative;
+    top: 8rem;
+    right: 8rem;
+}
+
+.star5 {
+    position: relative;
+    top: 28rem;
+    right: 20rem;
+}
+
+.star6 {
+    position: relative;
+    top: 25rem;
+    left: 3rem;
+}
+
+.star7 {
+    position: relative;
+    left: 4rem;
+}
+
+.star8 {
+    position: relative;
+}
+
+.star {
+    animation: twinkle 1s infinite linear;
+}
+
+@keyframes twinkle {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 0.9;
+    }
+    85% {
+        scale: 0.5;
+    }
+}
+
+
+/* Responsive design */
+
+@media only screen and (max-width: 500px) {
+    html {
+        font-size: 5px;
+    }
+}
